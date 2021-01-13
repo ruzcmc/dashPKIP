@@ -1,0 +1,157 @@
+                     <html>
+<head>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
+
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  
+</style>
+</head>
+<body>
+  
+  <div id="container"></div>
+  
+
+  <script>
+
+    anychart.onDocumentReady(function () {
+	
+	fetch('https://api.apispreadsheets.com/data/6425/?dataFormat=matrix')
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+      // create data set on our data
+      var datason = 
+            //header: [],
+			//header: ["Timestamp", "Jumlah Berita/News (Total Indonesia + Inggris)","Jumlah AIP","Jumlah Infografis (Inggris + Indonesia)","Jumlah Agenda","Jumlah Konten Lainnya (Foto, Media Cetak, dsb.)","Total Konten"],
+            //rows: 
+			myJson.data
+          ;
+		//echo datason
+		var dataSet = anychart.data.set(datason);
+      // map data for the first series, take x from the zero column and value from the first column of data set
+      var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+
+      // map data for the second series, take x from the zero column and value from the second column of data set
+      var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+      // map data for the third series, take x from the zero column and value from the third column of data set
+      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
+	  var fourthSeriesData = dataSet.mapAs({ x: 0, value: 4 });
+	  var fifthSeriesData = dataSet.mapAs({ x: 0, value: 5 });
+	  var sixthSeriesData = dataSet.mapAs({ x: 0, value: 6 });
+
+      // create line chart
+      var chart = anychart.line();
+
+      // turn on chart animation
+      chart.animation(true);
+
+      // set chart padding
+      chart.padding([10, 20, 5, 20]);
+
+      // turn on the crosshair
+      chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+
+      // set tooltip mode to point
+      chart.tooltip().positionMode('point');
+
+      // set chart title text settings
+      chart.title(
+        'Dasbor Update Konten Website unair.ac.id'
+      );
+
+      // set yAxis title
+      chart.yAxis().title('Jumlah Konten');
+      chart.xAxis().labels().padding(5);
+
+      // create first series with mapped data
+      var firstSeries = chart.line(firstSeriesData);
+      firstSeries.name('Berita/News');
+      firstSeries.hovered().markers().enabled(true).type('circle').size(4);
+      firstSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create second series with mapped data
+      var secondSeries = chart.line(secondSeriesData);
+      secondSeries.name('AIP');
+      secondSeries.hovered().markers().enabled(true).type('circle').size(4);
+      secondSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create third series with mapped data
+      var thirdSeries = chart.line(thirdSeriesData);
+      thirdSeries.name('Infografik');
+      thirdSeries.hovered().markers().enabled(true).type('circle').size(4);
+      thirdSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var fourthSeries = chart.line(fourthSeriesData);
+      fourthSeries.name('Agenda');
+      fourthSeries.hovered().markers().enabled(true).type('circle').size(4);
+      fourthSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var fifthSeries = chart.line(fifthSeriesData);
+      fifthSeries.name('Konten Lain');
+      fifthSeries.hovered().markers().enabled(true).type('circle').size(4);
+      fifthSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var sixthSeries = chart.line(sixthSeriesData);
+      sixthSeries.name('Total Konten');
+      sixthSeries.hovered().markers().enabled(true).type('circle').size(4);
+      sixthSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // turn the legend on
+      chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);
+
+      // set container id for the chart
+      chart.container('container');
+      // initiate chart drawing
+      chart.draw();
+    });
+
+    
+  })
+</script>
+</body>
+</html>
+                
