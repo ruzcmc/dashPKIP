@@ -328,7 +328,7 @@
   fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
 }(window,document,'script'));
 </script>
-<div id="chart-1-container"></div>
+<div id="chart-1-container"><h3>Pengunjung unair.ac.id</h3></div>
 <div id="chart-2-container"></div>
 <script>
 
@@ -348,14 +348,14 @@ gapi.analytics.ready(function() {
       'ids': 'ga:133277421', // <-- Replace with the ids value for your view.
       'start-date': '30daysAgo',
       'end-date': 'yesterday',
-      'metrics': 'ga:sessions,ga:users',
+      'metrics': 'ga:sessions',
       'dimensions': 'ga:date'
     },
     chart: {
       'container': 'chart-1-container',
       'type': 'LINE',
       'options': {
-        'width': '100%'
+        'width': '80%'
       }
     }
   });
