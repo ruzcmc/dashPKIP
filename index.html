@@ -40,9 +40,7 @@
   border-radius: 5px;
 }
 
-#chart-1-container {
-width: 50%;
-}
+
   
 </style>
 </head>
@@ -332,7 +330,7 @@ width: 50%;
   fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
 }(window,document,'script'));
 </script>
-<div id="chart-1-container"><h3>Pengunjung unair.ac.id</h3></div>
+<div id="chart-1-container"></div>
 <div id="chart-2-container"></div>
 <script>
 
@@ -359,7 +357,8 @@ gapi.analytics.ready(function() {
       'container': 'chart-1-container',
       'type': 'LINE',
       'options': {
-        'width': '80%'
+		'title': 'Pengunjung Harian unair.ac.id',
+        'width': '300px'
       }
     }
   });
