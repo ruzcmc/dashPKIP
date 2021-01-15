@@ -318,6 +318,52 @@
 </script>
 </div>
 </div>
+
+<div id="container">
+<script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+}(window,document,'script'));
+</script>
+<div id="chart-1-container"></div>
+<div id="chart-2-container"></div>
+<script>
+
+gapi.analytics.ready(function() {
+
+ 
+  gapi.analytics.auth.authorize({
+    'serverAuth': {
+      'access_token': '{{ "ya29.c.KpwB7gcdBhmkFQAEr1V0jbmV_IFYaKkXbXslpBvqdOj7AFeGnj6e84ab7zFWwg-6RGrYNy2mvHbVI1J51RMtjj8uGrEqJAsWL1_pUsADbZPRIKnRUliHm4Ith_Df1TmZy8h0eLC6s_sOdCdhM9ceyY6XzlwHjSduhgP47TnalV258P4E6WkBDKcnZtu-J3VkKCc7eEyBzA835CHj5XR9" }}'
+    }
+  });
+
+
+  
+  var dataChart1 = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'ids': 'ga:133277421', // <-- Replace with the ids value for your view.
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'metrics': 'ga:sessions,ga:users',
+      'dimensions': 'ga:date'
+    },
+    chart: {
+      'container': 'chart-1-container',
+      'type': 'LINE',
+      'options': {
+        'width': '100%'
+      }
+    }
+  });
+  dataChart1.execute();
+  });
+</script>
+
+</div>
 </body>
 </html>
                 
