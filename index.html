@@ -45,6 +45,7 @@
 		height: 50%;
 		margin: 0;
 		padding: 10px;
+		flex: 0 50%;
 		
     }
 #chart-2-container {
@@ -52,6 +53,7 @@
 		height: 50%;
 		margin: 0;
 		padding: 10px;
+		flex: 1;
 		
     }
 
@@ -344,8 +346,11 @@
   fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
 }(window,document,'script'));
 </script>
+
+<div id="wrapper">
 <div id="chart-1-container"></div>
 <div id="chart-2-container"></div>
+</div>
 <script>
 
 gapi.analytics.ready(function() {
