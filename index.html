@@ -365,6 +365,28 @@ gapi.analytics.ready(function() {
     }
   });
   dataChart1.execute();
+  
+  var dataChart2 = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'ids': '168063652', // <-- Replace with the ids value for your view.
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'metrics': 'ga:sessions',
+      'dimensions': 'ga:date'
+    },
+    chart: {
+      'container': 'chart-2-container',
+      'type': 'LINE',
+	  'title': 'Pengunjung Harian news.unair.ac.id',
+      'options': {
+		'title': 'Pengunjung Harian news.unair.ac.id',
+		'subtitle': 'per sesi kunjungan',
+        'width': '300px'
+      }
+    }
+  });
+  dataChart2.execute();
+  
   });
 </script>
 
