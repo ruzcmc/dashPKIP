@@ -16,12 +16,37 @@
       margin: 0;
       padding: 0;
     }
+	#graff {
+		width: 50%;
+		height: 50%;
+		margin: 0;
+		padding: 10px;
+		flex: 1;
+    }
+	#graf {
+		width: 50%;
+		height: 50%;
+		margin: 0;
+		padding: 10px;
+		flex: 0 50%
+    }
+	#wrapper {
+  display: flex;
+  height: 100%
+}
+
+	hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
   
 </style>
 </head>
 <body>
-  
-  <div id="container"></div>
+  <h1 align="center">Dashboard Pusat Komunikasi dan Informasi Publik</h1>
+<h2 align="center">Universitas Airlangga</h2>  
+<div id="wrapper">
+  <div id="graf">
   
 
   <script>
@@ -145,14 +170,154 @@
       chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);
 
       // set container id for the chart
-      chart.container('container');
+      chart.container('graf');
       // initiate chart drawing
       chart.draw();
     });
 
     
   })
+
 </script>
+</div>
+
+<hr class="rounded"></hr>
+<div id="graff">
+
+  
+
+  <script>
+
+    anychart.onDocumentReady(function () {
+	
+	fetch('https://api.apispreadsheets.com/data/6523/?dataFormat=matrix')
+        .then((response) => {
+            return response.json();
+        })
+        .then((akuJson) => {
+      // create data set on our data
+      var datasons = 
+            //header: [],
+			//header: ["Timestamp", "Jumlah Berita/News (Total Indonesia + Inggris)","Jumlah AIP","Jumlah Infografis (Inggris + Indonesia)","Jumlah Agenda","Jumlah Konten Lainnya (Foto, Media Cetak, dsb.)","Total Konten"],
+            //rows: 
+			akuJson.data
+          ;
+		//echo datason
+		var dataSets = anychart.data.set(datasons);
+      // map data for the first series, take x from the zero column and value from the first column of data set
+      var firstData = dataSets.mapAs({ x: 0, value: 1 });
+
+      // map data for the second series, take x from the zero column and value from the second column of data set
+      var secondData = dataSets.mapAs({ x: 0, value: 2 });
+
+      // map data for the third series, take x from the zero column and value from the third column of data set
+      var thirdData = dataSets.mapAs({ x: 0, value: 3 });
+	  var fourthData = dataSets.mapAs({ x: 0, value: 4 });
+	  var fifthData = dataSets.mapAs({ x: 0, value: 5 });
+	  var sixthData = dataSets.mapAs({ x: 0, value: 6 });
+
+      // create line chart
+      var chart = anychart.line();
+
+      // turn on chart animation
+      chart.animation(true);
+
+      // set chart padding
+      chart.padding([10, 20, 5, 20]);
+
+      // turn on the crosshair
+      chart.crosshair().enabled(true).yLabel(false).yStroke(null);
+
+      // set tooltip mode to point
+      chart.tooltip().positionMode('point');
+
+      // set chart title text settings
+      chart.title(
+        'Dasbor Update Media Sosial Unair'
+      );
+
+      // set yAxis title
+      chart.yAxis().title('Jumlah Konten');
+      chart.xAxis().labels().padding(5);
+
+      // create first series with mapped data
+      var firstSer = chart.line(firstData);
+      firstSer.name('Facebook');
+      firstSer.hovered().markers().enabled(true).type('circle').size(4);
+      firstSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create second series with mapped data
+      var secondSer = chart.line(secondData);
+      secondSer.name('Instagram');
+      secondSer.hovered().markers().enabled(true).type('circle').size(4);
+      secondSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create third series with mapped data
+      var thirdSer = chart.line(thirdData);
+      thirdSer.name('Twitter');
+      thirdSer.hovered().markers().enabled(true).type('circle').size(4);
+      thirdSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var fourthSer = chart.line(fourthData);
+      fourthSer.name('Linkedin');
+      fourthSer.hovered().markers().enabled(true).type('circle').size(4);
+      fourthSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var fifthSer = chart.line(fifthData);
+      fifthSer.name('Tiktok');
+      fifthSer.hovered().markers().enabled(true).type('circle').size(4);
+      fifthSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+		
+		var sixthSer = chart.line(sixthData);
+      sixthSer.name('Total Konten');
+      sixthSer.hovered().markers().enabled(true).type('circle').size(4);
+      sixthSer
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // turn the legend on
+      chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);
+
+      // set container id for the chart
+      chart.container('graff');
+      // initiate chart drawing
+      chart.draw();
+    });
+
+    
+  })
+
+</script>
+</div>
+</div>
 </body>
 </html>
                 
