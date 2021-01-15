@@ -351,6 +351,12 @@
 <div id="chart-1-container"></div>
 <div id="chart-2-container"></div>
 </div>
+
+<div id="wrapper">
+<div id="chart-3-container"></div>
+<div id="chart-4-container"></div>
+</div>
+
 <script>
 
 gapi.analytics.ready(function() {
@@ -405,6 +411,55 @@ gapi.analytics.ready(function() {
     }
   });
   dataChart2.execute();
+  
+  var dataChart3 = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'ids': 'ga:133277421', // <-- Replace with the ids value for your view.
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'metrics': 'ga:pageviews',
+      'dimensions': 'ga:pagePathLevel1',
+      'sort': '-ga:pageviews',
+      'filters': 'ga:pagePathLevel1!=/',
+      'max-results': 7
+    },
+    chart: {
+      'container': 'chart-3-container',
+      'type': 'PIE',
+	  'title': 'Laman Populer unair.ac.id',
+      'options': {
+		'title': 'Laman Populer unair.ac.id',
+        'width': '100%',
+        'pieHole': 4/9,
+      }
+    }
+  });
+  dataChart3.execute();
+  
+  var dataChart4 = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      'ids': 'ga:168063652', // <-- Replace with the ids value for your view.
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'metrics': 'ga:pageviews',
+      'dimensions': 'ga:pagePathLevel1',
+      'sort': '-ga:pageviews',
+      'filters': 'ga:pagePathLevel1!=/',
+      'max-results': 7
+    },
+    chart: {
+      'container': 'chart-4-container',
+      'type': 'PIE',
+	  'title': 'Laman Populer news.unair.ac.id',
+      'options': {
+		'title': 'Laman Populer news.unair.ac.id',
+        'width': '100%',
+        'pieHole': 4/9,
+      }
+    }
+  });
+  dataChart4.execute();
+  
   
   });
 </script>
