@@ -382,6 +382,7 @@ gapi.analytics.ready(function() {
       'container': 'chart-1-container',
       'type': 'LINE',
 	  'title': 'Pengunjung Harian unair.ac.id',
+	    'subtitle': 'per sesi kunjungan',
       'options': {
 		'title': 'Pengunjung Harian unair.ac.id',
 		'subtitle': 'per sesi kunjungan',
@@ -403,6 +404,7 @@ gapi.analytics.ready(function() {
       'container': 'chart-2-container',
       'type': 'LINE',
 	  'title': 'Pengunjung Harian news.unair.ac.id',
+	    'subtitle': 'per sesi kunjungan',
       'options': {
 		'title': 'Pengunjung Harian news.unair.ac.id',
 		'subtitle': 'per sesi kunjungan',
@@ -415,7 +417,7 @@ gapi.analytics.ready(function() {
   var dataChart3 = new gapi.analytics.googleCharts.DataChart({
     query: {
       'ids': 'ga:133277421', // <-- Replace with the ids value for your view.
-      'start-date': '30daysAgo',
+      'start-date': '14daysAgo',
       'end-date': 'yesterday',
       'metrics': 'ga:pageviews',
       'dimensions': 'ga:pagePathLevel4',
@@ -427,6 +429,7 @@ gapi.analytics.ready(function() {
       'container': 'chart-3-container',
       'type': 'PIE',
 	  'title': 'Laman Populer unair.ac.id',
+	    'subtitle': 'dalam 2 minggu terakhir',
       'options': {
 		'title': 'Laman Populer unair.ac.id',
         'width': '100%',
@@ -439,7 +442,7 @@ gapi.analytics.ready(function() {
   var dataChart4 = new gapi.analytics.googleCharts.DataChart({
     query: {
       'ids': 'ga:168063652', // <-- Replace with the ids value for your view.
-      'start-date': '30daysAgo',
+      'start-date': '14daysAgo',
       'end-date': 'yesterday',
       'metrics': 'ga:pageviews',
       'dimensions': 'ga:pagePathLevel4',
@@ -451,8 +454,10 @@ gapi.analytics.ready(function() {
       'container': 'chart-4-container',
       'type': 'PIE',
 	  'title': 'Laman Populer news.unair.ac.id',
+	    'subtitle': 'dalam 2 minggu terakhir',
       'options': {
 		'title': 'Laman Populer news.unair.ac.id',
+	      'subtitle': 'dalam 2 minggu terakhir',
         'width': '100%',
         'pieHole': 4/9,
       }
