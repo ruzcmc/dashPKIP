@@ -359,13 +359,13 @@
 </div>
 
 <script>
-
+var token = "";
 jQuery.ajax({
         type: "POST",
         url: 'http://news.unair.ac.id/dasbor/apiapi.php',
         data: {functionname: 'access'}, 
          success:function(data) {
-        var token = data 
+        token = data 
          }
     });
 
