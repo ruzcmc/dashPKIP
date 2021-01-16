@@ -32,7 +32,7 @@
     }
 	#wrapper {
   display: flex;
-  height: 90%
+  height: 100%
 }
 
 	hr.rounded {
@@ -359,12 +359,21 @@
 
 <script>
 
+jQuery.ajax({
+        type: "GET",
+        url: 'http://news.unair.ac.id/dasbor/apiapi.php',
+        data: {functionname: 'access'}, 
+         success:function(data) {
+        var token = data 
+         }
+    });
+
 gapi.analytics.ready(function() {
 
  
   gapi.analytics.auth.authorize({
     'serverAuth': {
-      'access_token': 'ya29.c.KpwB7gdfu9SM0Tu3RJycc_tFRlEUi7xoJt7MdjW6i1wEVa3L78QDESDQA7mpahU0GFKqMPM8S8-cdehQmeF9AQKQCOX22h2FrbSImgEHtRfRfLE9-u1KmrEflATcVxY5zCWYcJh1KaZB4lAhmKbAIrdb5qW3deBqcIxOX2-hOaZAn6ks471syqthO00HxZNpNYNSNytX9x9m3PoGaCzY'
+      'access_token': token
     }
   });
 
@@ -382,7 +391,6 @@ gapi.analytics.ready(function() {
       'container': 'chart-1-container',
       'type': 'LINE',
 	  'title': 'Pengunjung Harian unair.ac.id',
-	    'subtitle': 'per sesi kunjungan',
       'options': {
 		'title': 'Pengunjung Harian unair.ac.id',
 		'subtitle': 'per sesi kunjungan',
@@ -404,7 +412,6 @@ gapi.analytics.ready(function() {
       'container': 'chart-2-container',
       'type': 'LINE',
 	  'title': 'Pengunjung Harian news.unair.ac.id',
-	    'subtitle': 'per sesi kunjungan',
       'options': {
 		'title': 'Pengunjung Harian news.unair.ac.id',
 		'subtitle': 'per sesi kunjungan',
@@ -417,19 +424,18 @@ gapi.analytics.ready(function() {
   var dataChart3 = new gapi.analytics.googleCharts.DataChart({
     query: {
       'ids': 'ga:133277421', // <-- Replace with the ids value for your view.
-      'start-date': '14daysAgo',
+      'start-date': '30daysAgo',
       'end-date': 'yesterday',
       'metrics': 'ga:pageviews',
-      'dimensions': 'ga:pagePathLevel4',
+      'dimensions': 'ga:pagePathLevel1',
       'sort': '-ga:pageviews',
-      'filters': 'ga:pagePathLevel4!=/',
+      'filters': 'ga:pagePathLevel1!=/',
       'max-results': 7
     },
     chart: {
       'container': 'chart-3-container',
       'type': 'PIE',
 	  'title': 'Laman Populer unair.ac.id',
-	    'subtitle': 'dalam 2 minggu terakhir',
       'options': {
 		'title': 'Laman Populer unair.ac.id',
         'width': '100%',
@@ -442,22 +448,20 @@ gapi.analytics.ready(function() {
   var dataChart4 = new gapi.analytics.googleCharts.DataChart({
     query: {
       'ids': 'ga:168063652', // <-- Replace with the ids value for your view.
-      'start-date': '14daysAgo',
+      'start-date': '30daysAgo',
       'end-date': 'yesterday',
       'metrics': 'ga:pageviews',
-      'dimensions': 'ga:pagePathLevel4',
+      'dimensions': 'ga:pagePathLevel1',
       'sort': '-ga:pageviews',
-      'filters': 'ga:pagePathLevel4!=/',
+      'filters': 'ga:pagePathLevel1!=/',
       'max-results': 7
     },
     chart: {
       'container': 'chart-4-container',
       'type': 'PIE',
 	  'title': 'Laman Populer news.unair.ac.id',
-	    'subtitle': 'dalam 2 minggu terakhir',
       'options': {
 		'title': 'Laman Populer news.unair.ac.id',
-	      'subtitle': 'dalam 2 minggu terakhir',
         'width': '100%',
         'pieHole': 4/9,
       }
