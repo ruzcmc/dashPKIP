@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
   <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
   <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
   <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
   <style type="text/css">
 
@@ -359,13 +359,13 @@
 </div>
 
 <script>
-var token = "";
+var token;
 jQuery.ajax({
         type: "POST",
         url: 'http://news.unair.ac.id/dasbor/apiapi.php',
         data: {functionname: 'access'}, 
          success:function(data) {
-        token = data 
+        token = data; 
          }
     });
 
